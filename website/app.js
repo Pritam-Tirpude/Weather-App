@@ -1,4 +1,6 @@
 /* Global Variables */
+const temperature = document.getElementById("temp");
+const weatherDate = document.getElementById("date");
 
 // const { response } = require("express");
 
@@ -51,7 +53,7 @@ const getWeatherInfo = async (zipCode) => {
 document.getElementById("generate").addEventListener("click", getWeatherData);
 
 async function getWeatherData(params) {
-  if (zipCode !== "") {
+  if (document.getElementById("zip").value !== "") {
     zipCode = document.getElementById("zip").value;
     let jsonObj = await getWeatherInfo(zipCode);
     let dateCurrent = new Date().toDateString();
@@ -74,15 +76,13 @@ async function getWeatherData(params) {
 }
 
 const updateUI = async () => {
-  const request = await fetch("/getWeather");
+  const request = await fetch("/all");
   try {
     const allData = await request.json();
-    document.getElementById("date").innerHTML = allData.date;
-    document.getElementById("temp").innerHTML = allData.temp;
+    weatherDate.innerHTML = allData.date;
+    temperature.innerHTML = allData.temp;
   } catch (error) {
     console.log("Error:", error);
   }
 };
-// postData("/", { Movie: "Interstellar", Ratings: 5 });
-// postData("/", { Movie: "Tenet", Ratings: 10 });
-// postData("/", { Movie: "The Dark Knight", Ratings: 10 });
+});
