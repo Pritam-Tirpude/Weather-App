@@ -1,6 +1,7 @@
 /* Global Variables */
-const temperature = document.getElementById("temp");
-const weatherDate = document.getElementById("date");
+let temperature = document.querySelector("#temp");
+let weatherDate = document.querySelector("#date");
+let content = document.querySelector("#content");
 
 // const { response } = require("express");
 
@@ -79,8 +80,9 @@ const updateUI = async () => {
   const request = await fetch("/all");
   try {
     const allData = await request.json();
-    weatherDate.innerHTML = allData.date;
-    temperature.innerHTML = allData.temp;
+    weatherDate.innerHTML = allData[allData.length - 1].date;
+    temperature.innerHTML = allData[allData.length - 1].temp;
+    content.innerHTML = allData[allData.length - 1].content;
   } catch (error) {
     console.log("Error:", error);
   }
