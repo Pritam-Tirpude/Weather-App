@@ -22,6 +22,9 @@ body{
 
 .entry{
     background: rgba(59, 74, 107, .4);
+    position: absolute;
+    top: 50px;
+    right: 30px;
 }
 
 #entryHolder{
@@ -29,15 +32,15 @@ body{
 }
 
 #date{
-
+    font-size: 2rem;
 }
 
 #temp{
-
+    font-size: 2rem;
 }
 
 #content{
-
+    font-size: 2rem;
 }
 
 .headline {
